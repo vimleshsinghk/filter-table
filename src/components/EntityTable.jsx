@@ -24,14 +24,13 @@ export class EntityTable extends React.Component {
                   accessor: 'industry'
                 }
               ]
-            },
-            
+            }
           ]}
           defaultPageSize={10}
           className="-striped -highlight"
           defaultSorted={[
             {
-              id: "name",
+              id: 'name',
               desc: false
             }
           ]}

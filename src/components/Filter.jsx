@@ -4,37 +4,36 @@ export class Filter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: false
+      filterList: []
     };
   }
-  handleClick(e,ele) {
-    console.log(e,ele);
-    this.setState({ selected: !this.state.selected });
+
+  handleChange(e) {
+     //this.handleClick();
+     console.log(e.target.checked);
+    // this.setState({ selected: e.target.checked });
   }
-  handleChange(e,ele) {
-    console.log(e,ele);
-    this.setState({ selected: !this.state.selected });
-  }
+
   render() {
     // TODO: render the filters content here
     // HTML for each filter:
     // <button class="filter filter--selected">filter name<input className="filter__checkbox" type="checkbox"/></button>
 
-    return (
-      <div>
+    return this.props.filters.map(val => (
+      <div key={val.name}>
         <button
           className="filter filter--selected"
-          onClick={(e) => this.handleClick(e,this)}
+          onClick={() => this.props.handleClick(val)}
         >
-          {this.props.name}
+          {val.name}
           <input
             className="filter__checkbox"
             type="checkbox"
-            checked={this.state.selected}
-            onChange = {(e) => this.handleChange(e)}
+            checked={val.selected}
+            onChange={(e) => this.handleChange(e,val)}
           />
         </button>
       </div>
-    );
+    ));
   }
 }
