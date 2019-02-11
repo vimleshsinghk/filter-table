@@ -1,19 +1,6 @@
 import React from 'react';
 
 export class Filter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filterList: []
-    };
-  }
-
-  handleChange(e) {
-     //this.handleClick();
-     console.log(e.target.checked);
-    // this.setState({ selected: e.target.checked });
-  }
-
   render() {
     // TODO: render the filters content here
     // HTML for each filter:
@@ -30,7 +17,7 @@ export class Filter extends React.Component {
             className="filter__checkbox"
             type="checkbox"
             checked={val.selected}
-            onChange={(e) => this.handleChange(e,val)}
+            onChange={() => {}}
           />
         </button>
       </div>

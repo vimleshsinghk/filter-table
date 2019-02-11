@@ -17,7 +17,6 @@ export class EntityView extends React.Component {
   }
 
   handleFilterChange(val) {
-    console.log(val);
     this.setState(prevState => {
       prevState.filters.forEach(item => {
         if (item.name === val.name) item.selected = !item.selected;
@@ -34,7 +33,6 @@ export class EntityView extends React.Component {
       });
       return { filters: prevState.filters, data: filterData };
     });
-    console.log(this.state);
   }
 
   render() {
@@ -43,13 +41,13 @@ export class EntityView extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs={12} md={3}>
+          <Col xs={12} md={2}>
             <Filter
               filters={this.state.filters}
               handleClick={val => this.handleFilterChange(val)}
             />
           </Col>
-          <Col xs={12} md={9}>
+          <Col xs={12} md={10}>
             <EntityTable data={this.state.data} />;
           </Col>
         </Row>
