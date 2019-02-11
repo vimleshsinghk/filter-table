@@ -6,21 +6,24 @@ export class Filter extends React.Component {
     // HTML for each filter:
     // <button class="filter filter--selected">filter name<input className="filter__checkbox" type="checkbox"/></button>
 
-    return this.props.filters.map(val => (
-      <div key={val.name}>
-        <button
-          className="filter filter--selected"
-          onClick={() => this.props.handleClick(val)}
-        >
-          {val.name}
-          <input
-            className="filter__checkbox"
-            type="checkbox"
-            checked={val.selected}
-            onChange={() => {}}
-          />
-        </button>
-      </div>
-    ));
+    return (
+      <ul className="filter__container">
+        {this.props.filters.map(val => (
+          <li
+            key={val.name}
+            className={val.selected ? 'filter filter--selected' : 'filter'}
+            onClick={() => this.props.handleClick(val)}
+          >
+            {val.name}
+            <input
+              className="filter__checkbox"
+              type="checkbox"
+              checked={val.selected}
+              onChange={() => {}}
+            />
+          </li>
+        ))}
+      </ul>
+    );
   }
 }

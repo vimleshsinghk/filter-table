@@ -28,20 +28,48 @@ body {
   font-size: large;
 }
 
-.App-container{
+.App-container {
   padding: 5rem;
 }
 
 .ReactTable {
-  margin-left: 4rem;
-  margin-right: 4rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  min-width: 400px;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* TODO Add an custom styles for the table and filters here */
 
+.filter__container {
+  display: grid;
+  list-style: none;
+}
 
+.filter {
+  display: block;
+  padding: 7px 5px;
+  border: 1px solid rgba(225, 225, 225, 1);
+  cursor: pointer;
+  margin: 1px;
+}
+
+.filter:hover {
+  background: rgba(242, 242, 242, 1);
+}
+
+.filter--selected {
+  background: rgba(232, 232, 232, 1);
+}
+
+.filter__checkbox {
+  float: right;
+}

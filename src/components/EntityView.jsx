@@ -9,7 +9,7 @@ export class EntityView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filters: this.props.filters.map(val => {
+      filterList: this.props.filters.map(val => {
         return { name: val, selected: true };
       }),
       data: this.props.data
@@ -18,20 +18,23 @@ export class EntityView extends React.Component {
 
   handleFilterChange(val) {
     this.setState(prevState => {
-      prevState.filters.forEach(item => {
+      const newFilterList = prevState.filterList.map(item => {
         if (item.name === val.name) item.selected = !item.selected;
+        return item;
       });
-      const filterData = this.props.data.filter(data => {
+
+      const filterdData = this.props.data.filter(data => {
         let found = false;
-        prevState.filters.forEach(item => {
-          if (item.selected && data.industry === item.name) {
+        newFilterList.forEach(item => {
+          if (item.selected && item.name === data.industry) {
             found = true;
             return;
           }
         });
         return found;
       });
-      return { filters: prevState.filters, data: filterData };
+
+      return { filterList: newFilterList, data: filterdData };
     });
   }
 
@@ -41,13 +44,13 @@ export class EntityView extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs={12} md={2}>
+          <Col xs={12} md={3}>
             <Filter
-              filters={this.state.filters}
+              filters={this.state.filterList}
               handleClick={val => this.handleFilterChange(val)}
             />
           </Col>
-          <Col xs={12} md={10}>
+          <Col xs={12} md={9}>
             <EntityTable data={this.state.data} />;
           </Col>
         </Row>
