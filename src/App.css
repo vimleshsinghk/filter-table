@@ -57,17 +57,18 @@ body {
 .filter {
   display: block;
   padding: 7px 5px;
-  border: 1px solid rgba(225, 225, 225, 1);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(254, 254, 254, 1);
   cursor: pointer;
   margin: 1px;
 }
 
 .filter:hover {
-  background: rgba(242, 242, 242, 1);
+  background: rgba(222, 222, 222, 1);
 }
 
 .filter--selected {
-  background: rgba(232, 232, 232, 1);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .filter__checkbox {
